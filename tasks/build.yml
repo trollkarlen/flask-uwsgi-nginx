@@ -15,6 +15,8 @@
 - name: get app installed version
   shell: '{{ venv_dir }}/bin/pip show {{ app_module }} | grep Version'
   register: python_installed_version_out
+  ignore_errors: yes
+  failed_when: python_installed_version_out.rc > 1
   when: venv_exists.stat.exists == True
 - set_fact:
     app_installed_version: '{{ python_installed_version_out.stdout }}'

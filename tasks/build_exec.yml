@@ -42,6 +42,6 @@
   become: yes
   become_user: '{{ app_user }}'
 - name: install app from cached wheels
-  command: '{{ venv_pip_binary }} install --use-wheel --no-index --find-links={{ wheelhouse_dir }} {{ app_module }} chdir={{ app_build_dir }}'
+  command: '{{ venv_pip_binary }} install --no-index --find-links={{ wheelhouse_dir }} {{ app_module }} chdir={{ app_build_dir }}'
   become: yes
   become_user: '{{ app_user }}'
